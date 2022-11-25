@@ -3,7 +3,6 @@
   transition: height 200ms ease;
 }
 .react-grid-item {
-  /* border: solid 5px blue; */
   transition: all 200ms ease;
   transition-property: left, top;
 }
