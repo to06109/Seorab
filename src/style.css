@@ -1,0 +1,48 @@
+div {
+  /* border: solid 1px black; */
+  /* background-color: aqua; */
+}
+
+#nav {
+  text-align: center;
+  height: 50px;
+  border: solid 1px black;
+  background-color: #ffd100;
+}
+#nav > div {
+  display: flex;
+  justify-content: space-between;
+}
+#nav > div li {
+  margin: auto;
+  float: left;
+  padding: 0 30px;
+  line-height: 80px;
+}
+
+.nav {
+  padding: 10px 20px;
+}
+
+#icon {
+  width: 35px;
+  height: 30px;
+}
+
+#icon > img {
+  width: 35px;
+  height: 30px;
+}
+
+.frame {
+  border: solid 1px #d9d9d9;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #999;
+  margin-top: 3%;
+}
+
+.item_design {
+  border: solid 1px #d9d9d9;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
