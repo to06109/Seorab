@@ -1,13 +1,13 @@
 div {
   /* border: solid 1px black; */
   /* background-color: aqua; */
+  /* background-color: #ffe674; */
 }
 
+/* ----------------------------상단 바------------------------------ */
 #nav {
   text-align: center;
   height: 50px;
-  border: solid 1px black;
-  background-color: #ffd100;
 }
 #nav > div {
   display: flex;
@@ -34,6 +34,20 @@ div {
   height: 30px;
 }
 
+#icon > img:hover {
+  cursor: pointer;
+}
+
+.logo a {
+  all: unset;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.empty {
+  width: 90%;
+}
+
 .frame {
   border: solid 1px #d9d9d9;
   border-radius: 10px;
@@ -41,13 +55,16 @@ div {
   margin-top: 3%;
 }
 
+/* ----------------------------콘텐츠 박스---------------------------- */
 .item_design {
   border: solid 5px #151757;
   opacity: 90%;
   border-radius: 5px;
   box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }
 
+/* ----------------------------카테고리---------------------------- */
 .sidenav {
   height: 100%;
   width: 0;
@@ -55,23 +72,30 @@ div {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #151757;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+}
+
+#cate_title {
+  font-size: 30px;
+  color: #ffe674;
+  padding: 10px 20px;
 }
 
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
 }
 
 .sidenav a:hover {
-  color: #f1f1f1;
+  background-color: #ffe674;
+  color: #151757;
 }
 
 .sidenav .closebtn {
@@ -80,6 +104,7 @@ div {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  background-color: #d9d9d9;
 }
 
 @media screen and (max-height: 450px) {
@@ -89,4 +114,24 @@ div {
   .sidenav a {
     font-size: 18px;
   }
+}
+
+.add_btn {
+  position: absolute;
+  width: 75%;
+  height: 70px;
+
+  left: 12.31%;
+  right: 12.31%;
+  top: 85.23%;
+  bottom: 25%;
+
+  background-color: #ffd100;
+  border: 1px solid #151757;
+  font-size: 30px;
+  text-align: center;
+  line-height: 60px;
+  color: #151757;
+
+  cursor: pointer;
 }

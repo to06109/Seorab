@@ -132,9 +132,9 @@ export default class ShowcaseLayout extends React.Component {
   }
 }
 
-ShowcaseLayout.propTypes = {
-  onLayoutChange: PropTypes.func.isRequired,
-}
+// ShowcaseLayout.propTypes = {
+//   onLayoutChange: PropTypes.func.isRequired,
+// }
 
 ShowcaseLayout.defaultProps = {
   className: 'layout',
