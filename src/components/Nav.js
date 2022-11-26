@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const catagoryList = [
   'Recent',
@@ -19,18 +19,20 @@ function Nav() {
     })
   })
 
-  const openNav = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const openCategory = () => {
     document.getElementById('mySidenav').style.width = '300px'
   }
 
-  const closeNav = () => {
+  const closeCategory = () => {
     document.getElementById('mySidenav').style.width = '0'
   }
   return (
     <div>
       <div id="mySidenav" class="sidenav">
         <div id="categoryList">
-          <a href="javascript:void(0)" class="closebtn" onClick={closeNav}>
+          <a href="javascript:void(0)" class="closebtn" onClick={closeCategory}>
             &times;
           </a>
           <div id="cate_title">Catagory</div>
@@ -39,7 +41,7 @@ function Nav() {
       </div>
       <nav id="nav">
         <div className="nav">
-          <div id="icon" onClick={openNav}>
+          <div id="icon" onClick={openCategory}>
             <img src="assets/img/menu.png" />
           </div>
 
@@ -47,9 +49,18 @@ function Nav() {
             <a href="#">서랍</a>
           </div>
           <div className="empty" />
-          <div id="icon">
+          {/* ------------마이페이지------------- */}
+          <div id="icon" onClick={() => setIsOpen(!isOpen)}>
             <img src="assets/img/user.png" />
           </div>
+          {isOpen && (
+            <div className="select">
+              <ul>
+                <div>로그인</div>
+                <div>회원가입</div>
+              </ul>
+            </div>
+          )}
         </div>
       </nav>
     </div>

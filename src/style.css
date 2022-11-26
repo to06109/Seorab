@@ -4,6 +4,10 @@ div {
   /* background-color: #ffe674; */
 }
 
+* {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
 /* ----------------------------상단 바------------------------------ */
 #nav {
   text-align: center;
@@ -134,4 +138,42 @@ div {
   color: #151757;
 
   cursor: pointer;
+}
+
+/* ----------------------------마이페이지 드롭다운---------------------------- */
+
+.select {
+  position: absolute;
+  top: 5.5%;
+  right: 1.5%;
+  width: 180px;
+  height: 120px;
+  border: solid 3px #d9d9d9;
+  background-color: white;
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.select ul {
+  width: 180px;
+  height: 120px;
+  margin: 0;
+  padding: 15px 0px;
+  text-align: center;
+}
+
+.select div {
+  width: 160px;
+  height: 20px;
+  position: relative;
+  font-size: 20px;
+  margin: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: #d9d9d9;
+  font-weight: 540;
+}
+
+.select div:hover {
+  color: #151757;
 }
