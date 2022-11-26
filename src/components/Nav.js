@@ -28,6 +28,14 @@ function Nav() {
   const closeCategory = () => {
     document.getElementById('mySidenav').style.width = '0'
   }
+
+  const openLogin = () => {
+    window.location.href = '/login'
+  }
+
+  const openRegister = () => {
+    window.location.href = '/register'
+  }
   return (
     <div>
       <div id="mySidenav" class="sidenav">
@@ -56,8 +64,8 @@ function Nav() {
           {isOpen && (
             <div className="select">
               <ul>
-                <div>로그인</div>
-                <div>회원가입</div>
+                <div onClick={openLogin}>로그인</div>
+                <div onClick={openRegister}>회원가입</div>
               </ul>
             </div>
           )}
