@@ -46,6 +46,7 @@ div {
   all: unset;
   font-size: 25px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .empty {
@@ -176,4 +177,27 @@ div {
 
 .select div:hover {
   color: #151757;
+}
+
+/* ----------------------------로그인창---------------------------- */
+#container {
+  border: solid 1px black;
+  border-radius: 20px;
+
+  position: absolute;
+  width: 40%;
+  height: 70%;
+  left: 30%;
+  top: 15%;
+}
+
+.box {
+  border: solid 1px black;
+  border-radius: 20px;
+
+  position: absolute;
+  width: 40%;
+  height: 70%;
+  left: 30%;
+  top: 15%;
 }

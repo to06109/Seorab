@@ -54,7 +54,7 @@ function Nav() {
           </div>
 
           <div className="logo">
-            <a href="#">서랍</a>
+            <a href="/">서랍</a>
           </div>
           <div className="empty" />
           {/* ------------마이페이지------------- */}
