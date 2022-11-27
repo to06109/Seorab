@@ -248,7 +248,11 @@ input::placeholder {
 }
 
 .empty_login {
-  height: 80px;
+  height: 70px;
+}
+
+.google {
+  margin-top: 40px;
 }
 
 /* ----------------------------회원가입창---------------------------- */

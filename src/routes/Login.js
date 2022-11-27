@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Nav from '../components/Nav'
+import GoogleButton from '../components/GoogleButton'
 
 export default function Login() {
   const [data, setData] = useState({
@@ -43,6 +44,13 @@ export default function Login() {
     // }
   }
 
+  const onGoogleSignIn = async (res) => {
+    // postGoogleLogin: 서버에 인가 토큰 보내는 함수 -> 이 응답이 로그인 성공일 경우 홈으로 리다이렉트
+    // const result = await postGoogleLogin(res.credential)
+    //콜백 함수
+    console.log(res.credential)
+  }
+
   return (
     <div id="login">
       <Nav />
@@ -73,6 +81,7 @@ export default function Login() {
           </div>
 
           {/* 소셜로그인 */}
+          <GoogleButton onGoogleSignIn={onGoogleSignIn} />
         </div>
       </div>
     </div>
