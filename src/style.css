@@ -198,14 +198,14 @@ div {
   position: absolute;
   width: 50%;
   height: 70%;
-  left: 23%;
-  top: 15%;
+  left: 20%;
+  top: 10%;
 
   padding: 40px;
 }
 
 .top_margin {
-  margin-top: 70px;
+  margin-top: 20px;
 }
 
 .flex_col {
@@ -244,4 +244,15 @@ input::placeholder {
   font-size: 25px;
   margin-bottom: 10px;
   margin-top: 30px;
+  cursor: pointer;
+}
+
+.empty_login {
+  height: 80px;
+}
+
+/* ----------------------------회원가입창---------------------------- */
+
+.letter {
+  text-align: center;
 }

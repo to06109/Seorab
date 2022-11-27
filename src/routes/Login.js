@@ -49,6 +49,7 @@ export default function Login() {
       <div id="container">
         <div className="box">
           <form className="flex_col top_margin" onSubmit={onClick}>
+            <div className="empty_login" />
             <input
               name="id"
               type="text"
