@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Nav from '../components/Nav'
 import GoogleButton from '../components/GoogleButton'
 import jwt_decode from 'jwt-decode'
+import bcrypt from 'bcryptjs'
 
 export default function Login() {
   const [data, setData] = useState({
@@ -20,7 +21,6 @@ export default function Login() {
   }
 
   data['platform_type'] = 'general'
-  const reqData = JSON.stringify(data)
 
   // 백엔드 연동할 때 풀기 -> 로그인 성공 시 메인으로 redirect
   // const [resData, setResdata] = useState('');
@@ -28,8 +28,14 @@ export default function Login() {
 
   const onClick = async (e) => {
     e.preventDefault()
-    console.log(id, password)
-    console.log(reqData)
+
+    //비밀번호 암호화
+    bcrypt.hash(data['password'], 5, (err, hashedPassword) => {
+      if (err) throw new Error('비밀번호 암호화 오류')
+      data['password'] = hashedPassword
+    })
+
+    const reqData = JSON.stringify(data)
 
     // 백엔드 연동할 때 풀기
     // try{

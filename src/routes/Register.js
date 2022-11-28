@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Nav from '../components/Nav'
 import { Link } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
 
 export default function Register() {
   const [data, setData] = useState({
@@ -30,15 +31,19 @@ export default function Register() {
 
   // 백엔드 연동할 때 풀기
   // const [resData, setResdata] = useState('');
-  // const url = 'http://127.0.0.1:8000/test/getMembers/' ;
+  // const url = 'http://127.0.0.1:8000/register' ;
 
   const onClick = async (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       return alert('비밀번호와 비밀번호 확인은 같아야 합니다.')
     }
-    console.log(id, password, confirmPassword, name, email)
-    console.log(reqData)
+
+    //비밀번호 암호화
+    bcrypt.hash(data['password'], 5, (err, hashedPassword) => {
+      if (err) throw new Error('비밀번호 암호화 오류')
+      data['password'] = hashedPassword
+    })
 
     // 백엔드 연동할 때 풀기
     // try{
