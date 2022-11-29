@@ -3,6 +3,7 @@ import Nav from '../components/Nav'
 import GoogleButton from '../components/GoogleButton'
 import jwt_decode from 'jwt-decode'
 import bcrypt from 'bcryptjs'
+import axios from 'axios'
 
 export default function Login() {
   const [data, setData] = useState({
@@ -23,8 +24,9 @@ export default function Login() {
   data['platform_type'] = 'general'
 
   // 백엔드 연동할 때 풀기 -> 로그인 성공 시 메인으로 redirect
-  // const [resData, setResdata] = useState('');
-  // const url = 'http://127.0.0.1:8000/login' ;
+  const [resGeneralData, setResGeneraldata] = useState('')
+  const [resGoogleData, setResGoogledata] = useState('')
+  const url = 'http://127.0.0.1:8000/login'
 
   const onClick = async (e) => {
     e.preventDefault()
@@ -38,18 +40,20 @@ export default function Login() {
     const reqData = JSON.stringify(data)
 
     // 백엔드 연동할 때 풀기
-    // try{
-    //   const response = await axios.post(url, reqData,{
-    //     headers: {
-    //       // Overwrite Axios's automatically set Content-Type
-    //       'Content-Type': 'application/json'
-    //     }
-    //   });
-    //   setResdata(response.data);
-    // } catch (e) {
-    //   console.log(e)
-    //   alert("해당 id가 존재하지 않습니다.")
-    // }
+    try {
+      const response = await axios.post(url, reqData, {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          'Content-Type': 'application/json',
+        },
+      })
+      setResGeneraldata(response.data)
+      console.log(resGeneralData)
+      alert('로그인 성공했습니다.')
+    } catch (e) {
+      console.log(e)
+      alert('해당 id가 존재하지 않습니다.')
+    }
   }
 
   // https://developers.google.com/identity/gsi/web/guides/handle-credential-responses-js-functions#handle_credential_response
@@ -61,23 +65,25 @@ export default function Login() {
     const googleUser = {
       name: responsePayload.name,
       email: responsePayload.email,
+      password: 'test',
       platform_type: 'google',
     }
     const reqGoodleData = JSON.stringify(googleUser)
-    console.log('구글 로그인', reqGoodleData)
+    // console.log('구글 로그인', reqGoodleData)
 
     // 백엔드 연동할 때 풀기
-    // try {
-    //   const response = await axios.post(url, reqGoodleData, {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   })
-    //   setResdata(response.data)
-    // } catch (e) {
-    //   console.log(e)
-    //   alert('해당 id가 존재하지 않습니다.')
-    // }
+    try {
+      const response = await axios.post(url, reqGoodleData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      setResGoogledata(response.data)
+      console.log(resGoogleData)
+    } catch (e) {
+      console.log(e)
+      alert('해당 id가 존재하지 않습니다.')
+    }
   }
 
   return (

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Nav from '../components/Nav'
 import { Link } from 'react-router-dom'
 import bcrypt from 'bcryptjs'
+import axios from 'axios'
 
 export default function Register() {
   const [data, setData] = useState({
@@ -30,8 +31,8 @@ export default function Register() {
   })
 
   // 백엔드 연동할 때 풀기
-  // const [resData, setResdata] = useState('');
-  // const url = 'http://127.0.0.1:8000/register' ;
+  const [resData, setResdata] = useState('')
+  const url = 'http://127.0.0.1:8000/register'
 
   const onClick = async (e) => {
     e.preventDefault()
@@ -46,18 +47,20 @@ export default function Register() {
     })
 
     // 백엔드 연동할 때 풀기
-    // try{
-    //   const response = await axios.post(url, reqData,{
-    //     headers: {
-    //       // Overwrite Axios's automatically set Content-Type
-    //       'Content-Type': 'application/json'
-    //     }
-    //   });
-    //   setResdata(response.data);
-    // } catch (e) {
-    //   console.log(e)
-    //   alert("문제가 있습니다.")
-    // }
+    try {
+      const response = await axios.post(url, reqData, {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          'Content-Type': 'application/json',
+        },
+      })
+      setResdata(response.data)
+      console.log(resData)
+      alert('회원가입 성공했습니다.')
+    } catch (e) {
+      console.log(e)
+      alert('회원가입 문제가 있습니다.')
+    }
   }
 
   return (
