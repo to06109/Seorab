@@ -29,7 +29,12 @@ function Content() {
 
   // useEffect(() => {
   //   getContent()
+  //   setLoading(false)
   // }, [])
+
+  const onClick = () => {
+    window.location.href = `/contents/${id}/edit`
+  }
 
   useEffect(() => {
     setData(testData)
@@ -42,7 +47,9 @@ function Content() {
   ) : (
     <div>
       <Nav />
-      <button className="sort_btn">수정</button>
+      <button className="sort_btn" onClick={onClick}>
+        수정
+      </button>
       <div className="out_box">
         <div className="in_box flex_col">
           <h1>제목: {data.title}</h1>
