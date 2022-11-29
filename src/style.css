@@ -260,3 +260,22 @@ input::placeholder {
 .letter {
   text-align: center;
 }
+
+/* ----------------------------콘텐츠창---------------------------- */
+.out_box {
+  align-items: center;
+  padding: 100px;
+}
+
+.in_box {
+  align-items: center;
+  padding: 50px;
+  border: solid 3px #d9d9d9;
+  overflow: hidden;
+  height: auto;
+}
+
+/* .img_size {
+  width: 500px;
+  height: 700px;
+} */

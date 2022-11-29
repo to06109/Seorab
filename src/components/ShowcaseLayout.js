@@ -63,18 +63,20 @@ export default class ShowcaseLayout extends React.Component {
   }
 
   generateDOM() {
-    // function onClick(id) {
-    //   window.location.href = `/contents/${id}`
-    // }
-
     return _.map(this.state.layouts.lg, function (l, i) {
       return (
-        <div key={i} className="item_design">
+        <div
+          key={i}
+          className="item_design"
+          onClick={() => {
+            window.location.href = `/contents/${data[i].contents_id}`
+          }}
+        >
           <span className="text">{i}</span>
           <h3>{data[i].title}</h3>
           <span>{data[i].text}</span>
           <a href={data[i].link}>링크</a>
-          <Link to={`/contents/${data[i].contents_id}`}> 자세히보기</Link>
+          {/* <Link to={`/contents/${data[i].contents_id}`}> 자세히보기</Link> */}
         </div>
       )
     })
