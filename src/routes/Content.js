@@ -39,7 +39,6 @@ function Content() {
   useEffect(() => {
     setData(testData)
     setLoading(false)
-    console.log(id)
   }, [])
 
   return loading ? (
