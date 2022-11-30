@@ -63,7 +63,7 @@ export default function Login() {
     const googleUser = {
       name: responsePayload.name,
       email: responsePayload.email,
-      password: 'adminTest',
+      password: 'google',
       platform_type: 'google',
     }
 

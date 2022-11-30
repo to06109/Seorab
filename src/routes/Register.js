@@ -8,10 +8,10 @@ export default function Register() {
     email: '',
     password: '',
     confirmPassword: '',
-    name: '',
+    username: '',
   })
 
-  const { email, password, confirmPassword, name } = data
+  const { email, password, confirmPassword, username } = data
 
   const onChange = (e) => {
     const { name, value } = e.target
@@ -21,13 +21,7 @@ export default function Register() {
     })
   }
 
-  const reqData = JSON.stringify({
-    email,
-    password,
-    name,
-  })
-
-  const url = 'http://127.0.0.1:8000/accounts/signup'
+  const url = 'http://127.0.0.1:8000/accounts/signup/'
 
   const onClick = async (e) => {
     e.preventDefault()
@@ -45,7 +39,12 @@ export default function Register() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: reqData,
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+        username: data.username,
+        platform_type: 'general',
+      }),
     })
       .then((res) => {
         if (res.status === 400) {
@@ -89,7 +88,7 @@ export default function Register() {
               onChange={onChange}
             ></input>
             <input
-              name="name"
+              name="username"
               type="text"
               required
               placeholder=" 이름"
