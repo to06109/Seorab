@@ -61,7 +61,7 @@ export default function Login() {
   const onGoogleSignIn = async (res) => {
     const responsePayload = jwt_decode(res.credential)
     const googleUser = {
-      name: responsePayload.name,
+      username: responsePayload.name,
       email: responsePayload.email,
       password: 'google',
       platform_type: 'google',
