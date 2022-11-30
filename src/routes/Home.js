@@ -11,6 +11,7 @@ function Home() {
       <button className="sort_btn">정렬</button>
       <div className="frame">
         <ExampleLayout />
+        <button>추가</button>
       </div>
     </div>
   )

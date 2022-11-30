@@ -7,11 +7,9 @@ import axios from 'axios'
 
 export default function Login() {
   const [data, setData] = useState({
-    id: '',
+    email: '',
     password: '',
   })
-
-  const { id, password } = data
 
   const onChange = (e) => {
     const { name, value } = e.target
@@ -24,9 +22,9 @@ export default function Login() {
   data['platform_type'] = 'general'
 
   // 백엔드 연동할 때 풀기 -> 로그인 성공 시 메인으로 redirect
-  const [resGeneralData, setResGeneraldata] = useState('')
-  const [resGoogleData, setResGoogledata] = useState('')
-  const url = 'http://127.0.0.1:8000/login'
+  // const [resGeneralData, setResGeneraldata] = useState('')
+  // const [resGoogleData, setResGoogledata] = useState('')
+  const url = 'http://127.0.0.1:8000/accounts/signin/'
 
   const onClick = async (e) => {
     e.preventDefault()
@@ -37,53 +35,58 @@ export default function Login() {
       data['password'] = hashedPassword
     })
 
-    const reqData = JSON.stringify(data)
-
-    // 백엔드 연동할 때 풀기
-    try {
-      const response = await axios.post(url, reqData, {
-        headers: {
-          // Overwrite Axios's automatically set Content-Type
-          'Content-Type': 'application/json',
-        },
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          return alert('User not found')
+        }
+        return res.json()
       })
-      setResGeneraldata(response.data)
-      console.log(resGeneralData)
-      alert('로그인 성공했습니다.')
-    } catch (e) {
-      console.log(e)
-      alert('해당 id가 존재하지 않습니다.')
-    }
+      .then((res) => {
+        console.log(res)
+        alert('Login success')
+        // localStorage.setItem('userId', data.email)
+        window.location.href = '/'
+      })
+      .catch((err) => alert('Failure connection', err))
   }
 
   // https://developers.google.com/identity/gsi/web/guides/handle-credential-responses-js-functions#handle_credential_response
   const onGoogleSignIn = async (res) => {
-    // postGoogleLogin: 서버에 인가 토큰 보내는 함수 -> 이 응답이 로그인 성공일 경우 홈으로 리다이렉트
-    //콜백 함수
     const responsePayload = jwt_decode(res.credential)
-    // name, email, platform_type: google\
     const googleUser = {
       name: responsePayload.name,
       email: responsePayload.email,
-      password: 'test',
+      password: 'adminTest',
       platform_type: 'google',
     }
-    const reqGoodleData = JSON.stringify(googleUser)
-    // console.log('구글 로그인', reqGoodleData)
 
-    // 백엔드 연동할 때 풀기
-    try {
-      const response = await axios.post(url, reqGoodleData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(googleUser),
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          return alert('Google User not found')
+        }
+        return res.json()
       })
-      setResGoogledata(response.data)
-      console.log(resGoogleData)
-    } catch (e) {
-      console.log(e)
-      alert('해당 id가 존재하지 않습니다.')
-    }
+      .then((res) => {
+        console.log(res)
+        alert('Google Login success')
+        // localStorage.setItem('userId', data.email)
+        window.location.href = '/'
+      })
+      .catch((err) => alert('Failure connection', err))
   }
 
   return (
@@ -94,10 +97,10 @@ export default function Login() {
           <form className="flex_col top_margin" onSubmit={onClick}>
             <div className="empty_login" />
             <input
-              name="id"
+              name="email"
               type="text"
               required
-              placeholder=" 아이디"
+              placeholder=" 이메일"
               onChange={onChange}
             ></input>
             <input
